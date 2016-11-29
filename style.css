@@ -1,20 +1,50 @@
-.nameOfGame{
+.container{
+  text-align: center;
+}
+#nameOfGame{
   color: turquoise;
+  margin: 10px;
+  font-size: 66px;
+}
+#startButton{
+  color: #fff;
+  font-size: 22px;
+  background-color: #220022;
+  margin: 25px;
+  height: 60px;
+  width: 180px;
 }
 
 .fourButtons{
   display: flex;
+  flex-wrap: wrap;
+  height: 500px;
+  width: 500px;
+  background-color: orange;
+  margin: 0 auto;
 }
 
 .greenButton{
   background-color: green;
+  height: 200px;
+  width: 200px;
+  margin: auto;
 }
 .redButton{
   background-color: red;
-}
-.blueButton{
-  background-color: blue;
+  height: 200px;
+  width: 200px;
+  margin:auto;
 }
 .yellowButton{
   background-color: yellow;
+  height: 200px;
+  width: 200px;
+  margin: auto;
+}
+.blueButton{
+  background-color: blue;
+  height: 200px;
+  width: 200px;
+  margin: auto;
 }
