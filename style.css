@@ -24,25 +24,25 @@
   margin: 0 auto;
 }
 
-.greenButton{
+#greenButton{
   background-color: green;
   height: 200px;
   width: 200px;
   margin: auto;
 }
-.redButton{
+#redButton{
   background-color: red;
   height: 200px;
   width: 200px;
   margin:auto;
 }
-.yellowButton{
+#yellowButton{
   background-color: yellow;
   height: 200px;
   width: 200px;
   margin: auto;
 }
-.blueButton{
+#blueButton{
   background-color: blue;
   height: 200px;
   width: 200px;
