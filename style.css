@@ -1,3 +1,20 @@
-h1{
-  color: red;
+.nameOfGame{
+  color: turquoise;
+}
+
+.fourButtons{
+  display: flex;
+}
+
+.greenButton{
+  background-color: green;
+}
+.redButton{
+  background-color: red;
+}
+.blueButton{
+  background-color: blue;
+}
+.yellowButton{
+  background-color: yellow;
 }
