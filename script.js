@@ -1,51 +1,129 @@
-//Simon
-//nothing yet
-
-//define some variables
-let computerChoices = [];//will be an array of colors
-let userChoices = [];//will be an array of colors
+let computerChoices = [];//array of numbers
+let userChoices = [];//array of numbers
 let mostRecentChoice = [];
 
 let startGameButton = document.getElementById('startButton');
-let continueGame = false;
+let turnNumber = 0;
+// let continueGame = false;
 
 let greenButton = document.getElementById('greenButton');
 let redButton = document.getElementById('redButton');
 let yellowButton = document.getElementById('yellowButton');
 let blueButton = document.getElementById('blueButton');
+var randomNumber;
+let roundNumber = 1;
 
 
 
-let pushToComp = function (){
-  var randomNumber = Math.floor((Math.random() * 4) + 1);
-  computerChoices.push(randomNumber);
-  continueGame = true;
-};//pushToComp function
-startGameButton.addEventListener('click', pushToComp);
+
+
+startGameButton.addEventListener('click', computersFirstChoice);
 //add initial number to computerChoices array
-console.log(continueGame);
+
+function computersFirstChoice(){
+  roundNumber = 1;
+  randomNumber = Math.floor((Math.random() * 4) + 1);
+  computerChoices.push(randomNumber);
+  highlight(randomNumber);
+  //beep
+}
+
+function playersFirstChoice(){
+  greenButton.addEventListener('click', greenFunction);
+  redButton.addEventListener('click', redFunction);
+  yellowButton.addEventListener('click', yellowFunction);
+  blueButton.addEventListener('click', blueFunction);
+
+}
+
+function computersXChoice(){};
+
+function playersXChoice(){};
 
 
-let greenFunction = function (){
+
+
+//functions to push a number to users array
+function greenFunction (){
   mostRecentChoice = 1;
   userChoices.push(mostRecentChoice);
-};
-let redFunction = function (){
+}
+function redFunction (){
   mostRecentChoice = 2;
   userChoices.push(mostRecentChoice);
-};
-let yellowFunction = function (){
+}
+function yellowFunction(){
   mostRecentChoice = 3;
   userChoices.push(mostRecentChoice);
-};
-let blueFunction = function (){
+}
+function blueFunction(){
   mostRecentChoice = 4;
   userChoices.push(mostRecentChoice);
-};
-greenButton.addEventListener('click', greenFunction);
-redButton.addEventListener('click', redFunction);
-yellowButton.addEventListener('click', yellowFunction);
-blueButton.addEventListener('click', blueFunction);
+}
+
+
+//function that compares arrays for equality
+function decide (){
+//input loop here lol I forgot it was a memory game
+      if (userChoices[userChoices.length - 1] !== computerChoices[computerChoices.length - 1]){
+        console.log(computerChoices, userChoices, "sorry");
+      }//if
+      else {
+        console.log(computerChoices, userChoices, "yay");
+      }//else
+}//decidefunction
+
+var intervalId = setInterval(function(){
+  highlight();
+}, 400);
+
+
+
+//function that will highlight colors
+function highlight (num){
+  switch(num){
+    case 1:
+
+      greenButton.style.backgroundColor = "pink";
+      break;
+    case 2:
+      redButton.style.backgroundColor = "pink";
+      break;
+    case 3:
+      yellowButton.style.backgroundColor = "pink";
+      break;
+    case 4:
+      blueButton.style.backgroundColor = "pink";
+      break;
+  }//switch
+}//highlight function
+
+
+
+
+
+// console.log(continueGame);
+
+// let greenFunction = function (){
+//   mostRecentChoice = 1;
+//   userChoices.push(mostRecentChoice);
+// };
+// let redFunction = function (){
+//   mostRecentChoice = 2;
+//   userChoices.push(mostRecentChoice);
+// };
+// let yellowFunction = function (){
+//   mostRecentChoice = 3;
+//   userChoices.push(mostRecentChoice);
+// };
+// let blueFunction = function (){
+//   mostRecentChoice = 4;
+//   userChoices.push(mostRecentChoice);
+// };
+// greenButton.addEventListener('click', greenFunction);
+// redButton.addEventListener('click', redFunction);
+// yellowButton.addEventListener('click', yellowFunction);
+// blueButton.addEventListener('click', blueFunction);
 
   // greenButton.addEventListener('click', function(){
   // mostRecentChoice = 1;
@@ -61,27 +139,7 @@ blueButton.addEventListener('click', blueFunction);
   // userChoices.push(mostRecentChoice); } );
 // }//while
 
-function decide (){
-
-
-
-      if (userChoices[userChoices.length - 1] !== computerChoices[computerChoices.length - 1]){
-        console.log(computerChoices, userChoices, "sorry");
-
-      }//if
-      else {
-        console.log(computerChoices, userChoices, "yay");
-
-      }//else
-
-
-
-}//decidefunction
-
 // let pushToUser = function (){
 // };//pushToUser function
-
-
-
 
 //startGameButton.addEventListener('click', aIChooseColor);
