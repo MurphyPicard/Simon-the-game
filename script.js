@@ -3,15 +3,15 @@ let userChoices = [];//array of numbers
 let mostRecentChoice = [];
 
 let startGameButton = document.getElementById('startButton');
-let turnNumber = 0;
-// let continueGame = false;
 
 let greenButton = document.getElementById('greenButton');
 let redButton = document.getElementById('redButton');
 let yellowButton = document.getElementById('yellowButton');
 let blueButton = document.getElementById('blueButton');
-var randomNumber;
-let roundNumber = 1;
+
+let userTurn = true;
+var randomNumber = 0;
+let roundNumber = 0;
 
 
 
@@ -38,45 +38,83 @@ function computersFirstChoice(){
     clearInterval(interval2);
   }, 1001);
   //beep
+  console.log("Com array: "+computerChoices+" , U array: "+ userChoices+ ".");
+  decide();
 }//computersFirstChoice
 
 
-function playersFirstChoice(){
-  greenButton.addEventListener('click', greenFunction);
-  redButton.addEventListener('click', redFunction);
-  yellowButton.addEventListener('click', yellowFunction);
-  blueButton.addEventListener('click', blueFunction);
-  decide();
-
-  console.log("com array: "+computerChoices+" , u array: "+ userChoices+ ".");
-
-}
-
-function computersXChoice(){};
-
-function playersXChoice(){};
 
 
-
-
-//functions to push a number to users array
+greenButton.addEventListener('click', greenFunction);
+redButton.addEventListener('click', redFunction);
+yellowButton.addEventListener('click', yellowFunction);
+blueButton.addEventListener('click', blueFunction);
 function greenFunction (){
   mostRecentChoice = 1;
   userChoices.push(mostRecentChoice);
+  var interval = setInterval(function(){
+    highlight(mostRecentChoice);
+  }, 500);
+  var interval2 = setInterval(function(){
+    clearInterval(interval);
+    unhighlight(mostRecentChoice);
+  }, 1000);
+  var interval3 = setInterval(function(){
+    clearInterval(interval2);
+  }, 1001);
+  // userTurn = !userTurn;
 }
 function redFunction (){
   mostRecentChoice = 2;
   userChoices.push(mostRecentChoice);
+  var interval = setInterval(function(){
+    highlight(mostRecentChoice);
+  }, 500);
+  var interval2 = setInterval(function(){
+    clearInterval(interval);
+    unhighlight(mostRecentChoice);
+  }, 1000);
+  var interval3 = setInterval(function(){
+    clearInterval(interval2);
+  }, 1001);
+  // userTurn = !userTurn;
 }
 function yellowFunction(){
   mostRecentChoice = 3;
   userChoices.push(mostRecentChoice);
+  var interval = setInterval(function(){
+    highlight(mostRecentChoice);
+  }, 500);
+  var interval2 = setInterval(function(){
+    clearInterval(interval);
+    unhighlight(mostRecentChoice);
+  }, 1000);
+  var interval3 = setInterval(function(){
+    clearInterval(interval2);
+  }, 1001);
+  // userTurn = !userTurn;
 }
 function blueFunction(){
   mostRecentChoice = 4;
   userChoices.push(mostRecentChoice);
+  var interval = setInterval(function(){
+    highlight(mostRecentChoice);
+  }, 500);
+  var interval2 = setInterval(function(){
+    clearInterval(interval);
+    unhighlight(mostRecentChoice);
+  }, 1000);
+  var interval3 = setInterval(function(){
+    clearInterval(interval2);
+  }, 1001);
+  // userTurn = !userTurn;
 }
 
+
+
+function computersXChoice(){};
+
+function playersXChoice(){};
 
 //function that compares arrays for equality
 function decide (){
@@ -88,9 +126,6 @@ function decide (){
         console.log(computerChoices, userChoices, "yay");
       }//else
 }//decidefunction
-
-
-
 
 
 //function that will highlight colors
@@ -129,6 +164,32 @@ function unhighlight (num){
 }
 
 
+
+//functions to push a number to users array
+
+// var fourButtonDiv = document.querySelector(".fourButtons");
+// fourButtonDiv.addEventListener("click",  pushToUser()  , false);
+//
+// function pushToUser(x){
+//   switch(x){
+//     case green:
+//       mostRecentChoice = 1;
+//       userChoices.push(mostRecentChoice);
+//       break;
+//     case "red":
+//       mostRecentChoice = 2;
+//       userChoices.push(mostRecentChoice);
+//       break;
+//     case "yellow":
+//       mostRecentChoice = 3;
+//       userChoices.push(mostRecentChoice);
+//       break;
+//     case "blue":
+//       mostRecentChoice = 4;
+//       userChoices.push(mostRecentChoice);
+//       break;
+//   }//switch
+// }//pushToUser
 
 
 // console.log(continueGame);
