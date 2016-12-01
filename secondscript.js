@@ -16,16 +16,7 @@ var blueButton = document.getElementById('blueButton');
 
 
 //lots of functions below
-function setIntOne (){
-  highlight(ranNum);
-}//setIntOne
-function setIntTwo (){
-  clearInterval(interval);
-  unhighlight(ranNum);
-}//setIntTwo
-function setIntThree (){
-  clearInterval(interval2);
-}//setIntThree
+
 function highlight (num){
   switch(num){
     case 1:
@@ -67,50 +58,118 @@ function decide (){
         console.log(computerChoices, userChoices, "yay");
       }//else
 }//decidefunction
-function flipContinueGame (){
-  continueGame = !continueGame;//sets continueGame to true
+function flipContinueGameVariable (){
+    continueGame = !continueGame;//sets continueGame to true
 }//flipContinueGame
 
+function waitForTheClick(){
+  greenButton.addEventListener('click', greenFunction);
+  redButton.addEventListener('click', redFunction);
+  yellowButton.addEventListener('click', yellowFunction);
+  blueButton.addEventListener('click', blueFunction);
+  function greenFunction (){
+    mostRecentChoice = 1;
+    userChoices.push(mostRecentChoice);
+    var interval = setInterval(function(){
+      highlight(mostRecentChoice);
+    }, 500);
+    var interval2 = setInterval(function(){
+      clearInterval(interval);
+      unhighlight(mostRecentChoice);
+    }, 1000);
+    var interval3 = setInterval(function(){
+      clearInterval(interval2);
+    }, 1001);
+    // userTurn = !userTurn;
+  }
+  function redFunction (){
+    mostRecentChoice = 2;
+    userChoices.push(mostRecentChoice);
+    var interval = setInterval(function(){
+      highlight(mostRecentChoice);
+    }, 500);
+    var interval2 = setInterval(function(){
+      clearInterval(interval);
+      unhighlight(mostRecentChoice);
+    }, 1000);
+    var interval3 = setInterval(function(){
+      clearInterval(interval2);
+    }, 1001);
+    // userTurn = !userTurn;
+  }
+  function yellowFunction(){
+    mostRecentChoice = 3;
+    userChoices.push(mostRecentChoice);
+    var interval = setInterval(function(){
+      highlight(mostRecentChoice);
+    }, 500);
+    var interval2 = setInterval(function(){
+      clearInterval(interval);
+      unhighlight(mostRecentChoice);
+    }, 1000);
+    var interval3 = setInterval(function(){
+      clearInterval(interval2);
+    }, 1001);
+    // userTurn = !userTurn;
+  }
+  function blueFunction(){
+    mostRecentChoice = 4;
+    userChoices.push(mostRecentChoice);
+    var interval = setInterval(function(){
+      highlight(mostRecentChoice);
+    }, 500);
+    var interval2 = setInterval(function(){
+      clearInterval(interval);
+      unhighlight(mostRecentChoice);
+    }, 1000);
+    var interval3 = setInterval(function(){
+      clearInterval(interval2);
+    }, 1001);
+    // userTurn = !userTurn;
+  }//end of blueFunction
+}//end of wait for the click
 
-startGameButton.addEventListener('click', flipContinueGame());
+function theComputersTurn(){}
+function thePlayersTurn(){}
 
-if (continueGame === true){
-
-  if (playersTurn === false){
-    //computers turn now
-    round++;
-    //remember to put the round on screen here
-    userChoices = [];  //erases all user choices
-    ranNum = Math.floor((Math.random() * 4) + 1);//picks a random number
-    computerChoices.push(ranNum);// pushes to the computers array
-    for (var n in computerChoices){
-      var interval = setInterval(setIntOne (), 500);
-      var interval2 = setInterval(setIntTwo (), 1000);
-      var interval3 = setInterval(setIntThree (), 1001);
-    }//loop through the computers array
+function getEverythingStarted(){
+    flipContinueGameVariable();
+    if (continueGame === true){
 
 
+        if (playersTurn === false){
+            //computers turn now
+            round++;
+            //remember to put the round on screen here
+            userChoices = [];  //erases all user choices
+            ranNum = Math.floor((Math.random() * 4) + 1);//picks a random number
+            computerChoices.push(ranNum);// pushes to the computers array
+
+            for (var n in computerChoices){
+              setTimeout(function(){highlight(computerChoices[n]);}, 500);
+              console.log("first random number = " + computerChoices[n]);
+              setTimeout(function(){unhighlight(computerChoices[n]);}, 1000);
+              console.log("first random number = " + computerChoices[n]);
+              console.log("playersTurn1 = " + playersTurn);
+              playersTurn = true;
+              console.log("playersTurn2 = " + playersTurn);
+            }//loop through the computers array
+        }//if playersTurn
+
+        if (playersTurn === true){
+          console.log("if you can see this it is the players turn now");
+          waitForTheClick();
+          console.log(userChoices);
+
+
+        }//playersTurn
+    }//if continueGame
+    else{
+      console.log("If you can read this you lost the game.");
+    }//else continueGame
 
 
 
+}//getEverythingStarted
 
-  }//if playersTurn
-  else{
-
-
-
-  }// else playersTurn
-
-
-
-
-
-
-
-
-}//if continueGame
-else{
-  console.log("You lost...try again?");
-
-
-}//else continueGame
+startGameButton.addEventListener('click', getEverythingStarted);
