@@ -18,6 +18,7 @@ var blueButton = document.getElementById('blueButton');
 //lots of functions below
 
 function highlight (num){
+  console.log("highlight", num);
   switch(num){
     case 1:
       greenButton.style.backgroundColor = "#0a0";
@@ -129,40 +130,54 @@ function waitForTheClick(){
   }//end of blueFunction
 }//end of wait for the click
 
-function theComputersTurn(){}
-function thePlayersTurn(){}
+
+function theComputersTurn(){
+  if (playersTurn === false){
+      //computers turn now
+      round++;
+      //remember to put the round on screen here
+      userChoices = [];  //erases all user choices
+      ranNum = Math.floor((Math.random() * 4) + 1);//picks a random number
+      computerChoices.push(ranNum);// pushes to the computers array
+
+      var n = 0;
+      var intervalComputer = setInterval(function(){
+
+          if (n === computerChoices.length - 1){
+          clearInterval(intervalComputer);
+          }//if
+
+          setTimeout(function(){console.log(n, computerChoices); highlight(computerChoices[n]);}, 500);
+                console.log("first random number = " + computerChoices[n]);
+          setTimeout(function(){console.log("un");unhighlight(computerChoices[n]); n++}, 1000);
+                console.log("first random number = " + computerChoices[n]);
+                console.log("playersTurn1 = " + playersTurn);
+          playersTurn = true;
+                console.log("playersTurn2 = " + playersTurn);
+
+
+      }, 2000);
+
+
+  }//if playersTurn
+}//theComputersTurn function
+
+function thePlayersTurn(){
+  if (playersTurn === true){
+    console.log("if you can see this it is the players turn now");
+    waitForTheClick();
+    console.log(userChoices);
+  }//playersTurn
+}//thePlayersTurn function
 
 function getEverythingStarted(){
     flipContinueGameVariable();
     if (continueGame === true){
 
+        theComputersTurn();
 
-        if (playersTurn === false){
-            //computers turn now
-            round++;
-            //remember to put the round on screen here
-            userChoices = [];  //erases all user choices
-            ranNum = Math.floor((Math.random() * 4) + 1);//picks a random number
-            computerChoices.push(ranNum);// pushes to the computers array
+        thePlayersTurn();
 
-            for (var n in computerChoices){
-              setTimeout(function(){highlight(computerChoices[n]);}, 500);
-              console.log("first random number = " + computerChoices[n]);
-              setTimeout(function(){unhighlight(computerChoices[n]);}, 1000);
-              console.log("first random number = " + computerChoices[n]);
-              console.log("playersTurn1 = " + playersTurn);
-              playersTurn = true;
-              console.log("playersTurn2 = " + playersTurn);
-            }//loop through the computers array
-        }//if playersTurn
-
-        if (playersTurn === true){
-          console.log("if you can see this it is the players turn now");
-          waitForTheClick();
-          console.log(userChoices);
-
-
-        }//playersTurn
     }//if continueGame
     else{
       console.log("If you can read this you lost the game.");
@@ -173,3 +188,40 @@ function getEverythingStarted(){
 }//getEverythingStarted
 
 startGameButton.addEventListener('click', getEverythingStarted);
+
+
+
+
+
+/*
+use this
+
+  var n = 0;
+  var intervalComputer = setInterval( function(){
+      if (n === computerChoices.length){
+      clearInterval(intervalComputer)
+    }//if
+      setTimeout(function(){highlight(computerChoices[n]);}, 500);
+      console.log("first random number = " + computerChoices[n]);
+      setTimeout(function(){unhighlight(computerChoices[n]);}, 1000);
+      console.log("first random number = " + computerChoices[n]);
+      console.log("playersTurn1 = " + playersTurn);
+      playersTurn = true;
+      console.log("playersTurn2 = " + playersTurn);
+      n++;
+  }, 1002)
+*/
+
+/*
+don't use this
+
+  for (var n in computerChoices){
+    setTimeout(function(){highlight(computerChoices[n]);}, 500);
+    console.log("first random number = " + computerChoices[n]);
+    setTimeout(function(){unhighlight(computerChoices[n]);}, 1000);
+    console.log("first random number = " + computerChoices[n]);
+    console.log("playersTurn1 = " + playersTurn);
+    playersTurn = true;
+    console.log("playersTurn2 = " + playersTurn);
+  }//loop through the computers array
+*/
