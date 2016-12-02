@@ -9,10 +9,13 @@ var ranNum = [];
 var round = 0;
 
 var startGameButton = document.getElementById('startButton');
+/*
 var greenButton = document.getElementById('greenButton');
 var redButton = document.getElementById('redButton');
 var yellowButton = document.getElementById('yellowButton');
 var blueButton = document.getElementById('blueButton');
+*/
+var colorButtons = document.getElementsByClassName("coloredButton");
 
 
 //lots of functions below
@@ -50,24 +53,66 @@ function unhighlight (num){
       break;
   }//switch
 }//unhighlight
+function goToNextRound(){
+
+      theComputersTurn();
+      // wait for cpu turn to finish...
+      console.log("took cpu turn");
+      thePlayersTurn();
+      // wait for player to take turn
+      console.log("took player turn");
+
+}
 function decide (){
 //input loop here lol I forgot it was a memory game
       if (userChoices[userChoices.length - 1] !== computerChoices[computerChoices.length - 1]){
         console.log(computerChoices, userChoices, "sorry");
+        continueGame=false;
+        //TODO need to actually compare
       }//if
       else {
         console.log(computerChoices, userChoices, "yay");
+        continueGame= true;
+        goToNextRound();
       }//else
+
 }//decidefunction
 function flipContinueGameVariable (){
     continueGame = !continueGame;//sets continueGame to true
 }//flipContinueGame
 
-function waitForTheClick(){
+function buttonClickEvents(){
+
+  for (var i = 0; i < colorButtons.length; i++) {
+    colorButtons[i].addEventListener('click', function(event){
+    let choice = event.target.getAttribute('data-number');
+    colorFunction(choice);
+  });
+}
+
+/*
   greenButton.addEventListener('click', greenFunction);
   redButton.addEventListener('click', redFunction);
   yellowButton.addEventListener('click', yellowFunction);
   blueButton.addEventListener('click', blueFunction);
+  // when interval3 has fired, decide();
+*/
+  function colorFunction(choice){
+    userChoices.push(choice);
+    var interval = setInterval(function(){
+      highlight(choice);
+    }, 500);
+    var interval2 = setInterval(function(){
+      clearInterval(interval);
+      unhighlight(choice);
+      decide();
+    }, 1000);
+    var interval3 = setInterval(function(){
+      clearInterval(interval2);
+    }, 1002);
+    // userTurn = !userTurn;
+  }
+/*
   function greenFunction (){
     mostRecentChoice = 1;
     userChoices.push(mostRecentChoice);
@@ -80,6 +125,7 @@ function waitForTheClick(){
     }, 1000);
     var interval3 = setInterval(function(){
       clearInterval(interval2);
+      // emit event: user clicked & intervals are done.
     }, 1001);
     // userTurn = !userTurn;
   }
@@ -128,6 +174,13 @@ function waitForTheClick(){
     }, 1001);
     // userTurn = !userTurn;
   }//end of blueFunction
+  */
+}
+function waitForTheClick(){
+  // what happens when user clicks?
+  // when user does action, then decide:
+  // listen to event emitted from button click interval completion
+
 }//end of wait for the click
 
 
@@ -142,42 +195,37 @@ function theComputersTurn(){
 
       var n = 0;
       var intervalComputer = setInterval(function(){
-
-          if (n === computerChoices.length - 1){
+          //setInterval for each computer presses
+          if (n === computerChoices.length - 0){
           clearInterval(intervalComputer);
-          }//if
-          setTimeout(function(){console.log(n, computerChoices); highlight(computerChoices[n]);}, 200);
+          }//if//clears interval after all the comp presses so it doesnt keep going forever
+          setTimeout(function()
+            {
+              highlight(computerChoices[n]);
+            }, 200);
 
-          setTimeout(function(){console.log("un");unhighlight(computerChoices[n]); n++;}, 500);
-
-          debugger;
-          playersTurn = !playersTurn;
-          debugger;
-          console.log("playersTurn2 = " + playersTurn);
+          setTimeout(function(){
+            unhighlight(computerChoices[n]); n++;
+          }, 500);
       }, 600);
+      playersTurn = true;
   }//if playersTurn
 }//theComputersTurn function
 
 function thePlayersTurn(){
   if (playersTurn === true){
-    console.log("if you can see this it is the players turn now");
+
     waitForTheClick();
-    console.log(userChoices);
+
+    playersTurn = false;
   }//playersTurn
 }//thePlayersTurn function
 
 function getEverythingStarted(){
-    flipContinueGameVariable();
-    if (continueGame === true){
+    buttonClickEvents(); // set up game board
+    continueGame = true;
+    goToNextRound();
 
-        theComputersTurn();
-
-        thePlayersTurn();
-
-    }//if continueGame
-    else{
-      console.log("If you can read this you lost the game.");
-    }//else continueGame
 
 
 
