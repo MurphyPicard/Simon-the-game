@@ -4,6 +4,8 @@ var playersTurn = false;
 
 var computerChoices = [];//array of numbers
 var userChoices = [];
+var choice;
+console.log(userChoices);
 var temp = [];
 var ranNum = [];
 var round = 0;
@@ -52,48 +54,172 @@ function goToNextRound(){
       thePlayersTurn();
       // wait for player to take turn
       console.log("goToNextRound, thePlayersTurn, done");
-      decide();
+      // decide();
 }
 function decide (){
 //input loop here lol I forgot it was a memory game
-      if (userChoices[userChoices.length - 1] !== computerChoices[computerChoices.length - 1]){
-        console.log(computerChoices, userChoices, "sorry");
-        continueGame=false;
-        //TODO need to actually compare
-      }//if
-      else {
-        console.log(computerChoices, userChoices, "yay");
-        continueGame= true;
-        goToNextRound();
+  for (var i = 0; i<computerChoices.length; i++){
+      if (choice == computerChoices[i]){continue;}
+      else if (choice != computerChoices[i]){console.log("you lose");}
+      else{console.log("this should never show");}
       }//else
+      round++;
+      //goToNextRound();
 }//decidefunction
 function flipContinueGameVariable (){
     continueGame = !continueGame;//sets continueGame to true
 }//flipContinueGame
 
 function buttonClickEvents(){
-
-  for (var i = 0; i < colorButtons.length; i++) {
-    colorButtons[i].addEventListener('click', function(event){
-    var choice = parseInt(event.target.getAttribute('data-number'));
-    colorFunction(choice);
-  });
-}//for
+  greenButton.addEventListener('click', greenFunction);
+  redButton.addEventListener('click', redFunction);
+  yellowButton.addEventListener('click', yellowFunction);
+  blueButton.addEventListener('click', blueFunction);
+  // for (var i = 0; i < 4; i++) {
+  //   colorButtons[i].addEventListener('click', function(event){
+  //   var choice = parseInt(event.target.getAttribute('data-number'));
+  //   userChoices.push(choice);
+  //   colorFunction(choice);
+  // });
+// }//for
 }//buttonClickEvents
+function greenFunction (){
+  mostRecentChoice = 1;
+  userChoices.push(mostRecentChoice);
+  var interval = setInterval(function(){
+    highlight(mostRecentChoice);
+  }, 500);
+  var interval2 = setInterval(function(){
+    clearInterval(interval);
+    unhighlight(mostRecentChoice);
+  }, 1000);
+  var interval3 = setInterval(function(){
+    clearInterval(interval2);
+    // emit event: user clicked & intervals are done.
+  }, 1001);
+  // userTurn = !userTurn;
+}
+function redFunction (){
+  mostRecentChoice = 2;
+  userChoices.push(mostRecentChoice);
+  var interval = setInterval(function(){
+    highlight(mostRecentChoice);
+  }, 500);
+  var interval2 = setInterval(function(){
+    clearInterval(interval);
+    unhighlight(mostRecentChoice);
+  }, 1000);
+  var interval3 = setInterval(function(){
+    clearInterval(interval2);
+  }, 1001);
+  // userTurn = !userTurn;
+}
+function yellowFunction(){
+  mostRecentChoice = 3;
+  userChoices.push(mostRecentChoice);
+  var interval = setInterval(function(){
+    highlight(mostRecentChoice);
+  }, 500);
+  var interval2 = setInterval(function(){
+    clearInterval(interval);
+    unhighlight(mostRecentChoice);
+  }, 1000);
+  var interval3 = setInterval(function(){
+    clearInterval(interval2);
+  }, 1001);
+  // userTurn = !userTurn;
+}
+function blueFunction(){
+  mostRecentChoice = 4;
+  userChoices.push(mostRecentChoice);
+  var interval = setInterval(function(){
+    highlight(mostRecentChoice);
+  }, 500);
+  var interval2 = setInterval(function(){
+    clearInterval(interval);
+    unhighlight(mostRecentChoice);
+  }, 1000);
+  var interval3 = setInterval(function(){
+    clearInterval(interval2);
+  }, 1001);
+  // userTurn = !userTurn;
+}//end of blueFunction
 
-function colorFunction(choice){
-    userChoices.push(choice);
+function colorFunction(){
+
+  function greenFunction (){
+    mostRecentChoice = 1;
+    userChoices.push(mostRecentChoice);
     var interval = setInterval(function(){
-        highlight(choice);
-    }, 50);
+      highlight(mostRecentChoice);
+    }, 500);
     var interval2 = setInterval(function(){
-        clearInterval(interval);
-        unhighlight(choice);
-    }, 300);
+      clearInterval(interval);
+      unhighlight(mostRecentChoice);
+    }, 1000);
     var interval3 = setInterval(function(){
-        clearInterval(interval2);
-    }, 302);
-      // userTurn = !userTurn;
+      clearInterval(interval2);
+      // emit event: user clicked & intervals are done.
+    }, 1001);
+    // userTurn = !userTurn;
+  }
+  function redFunction (){
+    mostRecentChoice = 2;
+    userChoices.push(mostRecentChoice);
+    var interval = setInterval(function(){
+      highlight(mostRecentChoice);
+    }, 500);
+    var interval2 = setInterval(function(){
+      clearInterval(interval);
+      unhighlight(mostRecentChoice);
+    }, 1000);
+    var interval3 = setInterval(function(){
+      clearInterval(interval2);
+    }, 1001);
+    // userTurn = !userTurn;
+  }
+  function yellowFunction(){
+    mostRecentChoice = 3;
+    userChoices.push(mostRecentChoice);
+    var interval = setInterval(function(){
+      highlight(mostRecentChoice);
+    }, 500);
+    var interval2 = setInterval(function(){
+      clearInterval(interval);
+      unhighlight(mostRecentChoice);
+    }, 1000);
+    var interval3 = setInterval(function(){
+      clearInterval(interval2);
+    }, 1001);
+    // userTurn = !userTurn;
+  }
+  function blueFunction(){
+    mostRecentChoice = 4;
+    userChoices.push(mostRecentChoice);
+    var interval = setInterval(function(){
+      highlight(mostRecentChoice);
+    }, 500);
+    var interval2 = setInterval(function(){
+      clearInterval(interval);
+      unhighlight(mostRecentChoice);
+    }, 1000);
+    var interval3 = setInterval(function(){
+      clearInterval(interval2);
+    }, 1001);
+    // userTurn = !userTurn;
+  }//end of blueFunction
+
+    // var interval = setInterval(function(){
+    //     highlight(choice);
+    // }, 50);
+    // var interval2 = setInterval(function(){
+    //     clearInterval(interval);
+    //     unhighlight(choice);
+    // }, 300);
+    // var interval3 = setInterval(function(){
+    //     clearInterval(interval2);
+    // }, 302);
+    //   // userTurn = !userTurn;
   }//colorFunction
 
 function waitForTheClick(){
