@@ -61,6 +61,7 @@ function goToNextRound(){
       thePlayersTurn();
       // wait for player to take turn
       console.log("took player turn");
+      
 
 }
 function decide (){
@@ -85,7 +86,7 @@ function buttonClickEvents(){
 
   for (var i = 0; i < colorButtons.length; i++) {
     colorButtons[i].addEventListener('click', function(event){
-    let choice = event.target.getAttribute('data-number');
+    let choice = parseInt(event.target.getAttribute('data-number'));
     colorFunction(choice);
   });
 }
@@ -105,7 +106,6 @@ function buttonClickEvents(){
     var interval2 = setInterval(function(){
       clearInterval(interval);
       unhighlight(choice);
-      decide();
     }, 1000);
     var interval3 = setInterval(function(){
       clearInterval(interval2);
