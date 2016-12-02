@@ -10,9 +10,9 @@
   color: #fff;
   font-size: 22px;
   background-color: #220022;
-  margin: 25px;
-  height: 60px;
-  width: 180px;
+  margin: 25px 25px 0px 25px;
+  height: 70px;
+  width: 350px;
 }
 .fourButtons{
   display: flex;
