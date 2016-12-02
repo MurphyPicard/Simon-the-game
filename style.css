@@ -14,7 +14,6 @@
   height: 60px;
   width: 180px;
 }
-
 .fourButtons{
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +22,6 @@
   background-color: orange;
   margin: 0 auto;
 }
-
 #greenButton{
   background-color: green;
   height: 200px;

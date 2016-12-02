@@ -146,19 +146,15 @@ function theComputersTurn(){
           if (n === computerChoices.length - 1){
           clearInterval(intervalComputer);
           }//if
+          setTimeout(function(){console.log(n, computerChoices); highlight(computerChoices[n]);}, 200);
 
-          setTimeout(function(){console.log(n, computerChoices); highlight(computerChoices[n]);}, 500);
-                console.log("first random number = " + computerChoices[n]);
-          setTimeout(function(){console.log("un");unhighlight(computerChoices[n]); n++}, 1000);
-                console.log("first random number = " + computerChoices[n]);
-                console.log("playersTurn1 = " + playersTurn);
-          playersTurn = true;
-                console.log("playersTurn2 = " + playersTurn);
+          setTimeout(function(){console.log("un");unhighlight(computerChoices[n]); n++;}, 500);
 
-
-      }, 2000);
-
-
+          debugger;
+          playersTurn = !playersTurn;
+          debugger;
+          console.log("playersTurn2 = " + playersTurn);
+      }, 600);
   }//if playersTurn
 }//theComputersTurn function
 
