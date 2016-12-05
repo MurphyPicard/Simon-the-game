@@ -13,15 +13,20 @@
       <p><span>A memory game invented by Ralph H. Baer and Howard J. Morrison</span></p>
       <p><span>Turn </span><span id="round">1</span></p>
       <p>Official slogan:  Simon's a computer, Simon has a brain, you either do what Simon says or else go down the drain</p>
-      <button type="button" id="startButton">Press to go to next round.</button>
+      <button type="button" id="startButton">Start</button>
 
 
       <div class="fourButtons">
-        <div class="coloredButton" data-number=1 id="greenButton">green 1</div>
-        <div class="coloredButton" data-number=2 id="redButton">red 2</div>
-        <div class="coloredButton" data-number=3 id="yellowButton">yellow 3</div>
-        <div class="coloredButton" data-number=4 id="blueButton">blue 4</div>
+        <div onclick="playSound1()" class="coloredButton" data-number=1 id="greenButton">green 1</div>
+        <div onclick="playSound2()" class="coloredButton" data-number=2 id="redButton">red 2</div>
+        <div onclick="playSound3()" class="coloredButton" data-number=3 id="yellowButton">yellow 3</div>
+        <div onclick="playSound4()" class="coloredButton" data-number=4 id="blueButton">blue 4</div>
       </div><!--fourButtons-->
+
+      <audio id="play1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+      <audio id="play2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+      <audio id="play3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+      <audio id="play4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
 
 
     </div><!--container-->

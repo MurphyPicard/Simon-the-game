@@ -134,6 +134,18 @@ function blueFunction(){
   checkArrayLengths(userChoices, computerChoices);
 }//end of blueFunction
 
+function playSound1 () {
+    document.getElementById('play1').play();
+}
+function playSound2 () {
+    document.getElementById('play2').play();
+}
+function playSound3 () {
+    document.getElementById('play3').play();
+}
+function playSound4 () {
+    document.getElementById('play4').play();
+}
 
 function checkArrayLengths(u,c){
     if (u.length === c.length){
@@ -160,15 +172,11 @@ function checkArrayLengths(u,c){
     else{console.log("this message should never show");}
 }//checkArrayLengths
 
-function waitToUpdateRound(){
-  document.getElementById("round").innerHTML = round;
-}
-
 function theComputersTurn(){
   if (playersTurn === false){
       //computers turn now
       round++;
-      setTimeout(function(){waitToUpdateRound();}, 600);
+      setTimeout(function(){document.getElementById("round").innerHTML = round;}, 500);
       userChoices = [];  //erases all user choices
       ranNum = Math.floor((Math.random() * 4) + 1);//picks a random number
       computerChoices.push(ranNum);// pushes to the computers array
@@ -177,6 +185,12 @@ function theComputersTurn(){
       var intervalComputer = setInterval(function(){
           //setInterval for each computer presses
           if (n === computerChoices.length - 0){clearInterval(intervalComputer);}//if//clears interval after all the comp presses so it doesnt keep going forever
+
+          if      (computerChoices[n] === 1){setTimeout(function(){playSound1();}, 400);}
+          else if (computerChoices[n] === 2){setTimeout(function(){playSound2();}, 400);}
+          else if (computerChoices[n] === 3){setTimeout(function(){playSound3();}, 400);}
+          else if (computerChoices[n] === 4){setTimeout(function(){playSound4();}, 400);}
+
           setTimeout(function(){  highlight(computerChoices[n]);     }, 400);
           setTimeout(function(){unhighlight(computerChoices[n]); n++;}, 700);
       }, 702);//setInterval
