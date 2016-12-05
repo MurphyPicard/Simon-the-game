@@ -9,7 +9,7 @@
 #startButton{
   color: #fff;
   font-size: 22px;
-  background-color: #220022;
+  background-color: red;
   margin: 25px 25px 0px 25px;
   height: 70px;
   width: 350px;
@@ -19,29 +19,29 @@
   flex-wrap: wrap;
   height: 500px;
   width: 500px;
-  background-color: rgba(153, 76, 0, 1);
+  background-color: rgba(84, 82, 36, 1);
   margin: 0 auto;
 }
 #greenButton{
-  background-color: rgba(204, 255, 204, 1);
+  background-color: #9f9;
   height: 200px;
   width: 200px;
   margin: auto;
 }
 #redButton{
-  background-color: rgba(255, 204, 204, 1);
+  background-color: #f99;
   height: 200px;
   width: 200px;
   margin:auto;
 }
 #yellowButton{
-  background-color: rgba(255, 255, 204, 1);
+  background-color: #ff9;
   height: 200px;
   width: 200px;
   margin: auto;
 }
 #blueButton{
-  background-color: rgba(204, 204, 255, 1);
+  background-color: #9ff;
   height: 200px;
   width: 200px;
   margin: auto;

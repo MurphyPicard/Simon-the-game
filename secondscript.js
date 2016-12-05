@@ -17,32 +17,32 @@ var colorButtons = document.getElementsByClassName("coloredButton");
 function highlight (num){
   switch(num){
     case 1:
-      greenButton.style.backgroundColor = "#0a0";
+      greenButton.style.backgroundColor = "#0f0";
       break;
     case 2:
-      redButton.style.backgroundColor = "#a00";
+      redButton.style.backgroundColor = "#f00";
       break;
     case 3:
-      yellowButton.style.backgroundColor = "#aa0";
+      yellowButton.style.backgroundColor = "#ff0";
       break;
     case 4:
-      blueButton.style.backgroundColor = "#00a";
+      blueButton.style.backgroundColor = "#00f";
       break;
   }//switch
 }//highlight function
 function unhighlight (num){
   switch(num){
     case 1:
-      greenButton.style.backgroundColor = "green";
+      greenButton.style.backgroundColor = "#9f9";
       break;
     case 2:
-      redButton.style.backgroundColor = "red";
+      redButton.style.backgroundColor = "#f99";
       break;
     case 3:
-      yellowButton.style.backgroundColor = "yellow";
+      yellowButton.style.backgroundColor = "#ff9";
       break;
     case 4:
-      blueButton.style.backgroundColor = "blue";
+      blueButton.style.backgroundColor = "#9ff";
       break;
   }//switch
 }//unhighlight
@@ -73,7 +73,7 @@ function greenFunction (){
   userChoices.push(mostRecentChoice);
   var interval = setInterval(function(){
     highlight(mostRecentChoice);
-  }, 10);
+  }, 1);
   var interval2 = setInterval(function(){
     clearInterval(interval);
     unhighlight(mostRecentChoice);
@@ -90,7 +90,7 @@ function redFunction (){
   userChoices.push(mostRecentChoice);
   var interval = setInterval(function(){
     highlight(mostRecentChoice);
-  }, 10);
+  }, 1);
   var interval2 = setInterval(function(){
     clearInterval(interval);
     unhighlight(mostRecentChoice);
@@ -106,7 +106,7 @@ function yellowFunction(){
   userChoices.push(mostRecentChoice);
   var interval = setInterval(function(){
     highlight(mostRecentChoice);
-  }, 10);
+  }, 1);
   var interval2 = setInterval(function(){
     clearInterval(interval);
     unhighlight(mostRecentChoice);
@@ -122,7 +122,7 @@ function blueFunction(){
   userChoices.push(mostRecentChoice);
   var interval = setInterval(function(){
     highlight(mostRecentChoice);
-  }, 10);
+  }, 1);
   var interval2 = setInterval(function(){
     clearInterval(interval);
     unhighlight(mostRecentChoice);
@@ -141,6 +141,7 @@ function checkArrayLengths(u,c){
             if (u[u.length - 1] === c[c.length - 1]){
               //do something nice for the next round  ////////////////////////
               playersTurn = false;
+
               goToNextRound();
             }//if
             else{console.log('You lose spot 2');}
@@ -159,13 +160,15 @@ function checkArrayLengths(u,c){
     else{console.log("this message should never show");}
 }//checkArrayLengths
 
-
+function waitToUpdateRound(){
+  document.getElementById("round").innerHTML = round;
+}
 
 function theComputersTurn(){
   if (playersTurn === false){
       //computers turn now
       round++;
-      //remember to put the round on screen here
+      setTimeout(function(){waitToUpdateRound();}, 600);
       userChoices = [];  //erases all user choices
       ranNum = Math.floor((Math.random() * 4) + 1);//picks a random number
       computerChoices.push(ranNum);// pushes to the computers array
@@ -184,8 +187,6 @@ function theComputersTurn(){
 function thePlayersTurn(){
   if (playersTurn === true){
     // waitForTheClick();
-
-
   }//playersTurn
 }//thePlayersTurn function
 

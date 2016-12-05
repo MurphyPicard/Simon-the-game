@@ -1,12 +1,20 @@
-I have decided to attempt to make the game Simon.
+Game completed December 2016 with the help of Neil Burdick and Danny Kirschner.
 
-Once I learn to play I'll post the instructions below.
+When starting this project I had a good understanding of algorithms and how to
+make functions that work on their own, but found out I was very weak on where
+to use those functions.  At certain points I found this project to be impossibly
+hard and thought I was miles from completion and did not realize that by moving
+one function to a better spot I could change the whole gameflow, and was
+actually very near completion.  Danny and Neil both deserve the credit for
+teaching me this.
 
-Enjoy!
+Simon is a fun memory game where the user has to mimic the computers color patterns.
+
+
+
+I'm keeping the pseudocode below to I can look back on how I used to think.
 
 Step 1: User must press the start button.
-
-
 # Pseudocode
 -----------------------------------------------
 # Initial computer choice.
