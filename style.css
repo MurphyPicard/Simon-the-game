@@ -19,29 +19,29 @@
   flex-wrap: wrap;
   height: 500px;
   width: 500px;
-  background-color: orange;
+  background-color: rgba(153, 76, 0, 1);
   margin: 0 auto;
 }
 #greenButton{
-  background-color: green;
+  background-color: rgba(204, 255, 204, 1);
   height: 200px;
   width: 200px;
   margin: auto;
 }
 #redButton{
-  background-color: red;
+  background-color: rgba(255, 204, 204, 1);
   height: 200px;
   width: 200px;
   margin:auto;
 }
 #yellowButton{
-  background-color: yellow;
+  background-color: rgba(255, 255, 204, 1);
   height: 200px;
   width: 200px;
   margin: auto;
 }
 #blueButton{
-  background-color: blue;
+  background-color: rgba(204, 204, 255, 1);
   height: 200px;
   width: 200px;
   margin: auto;

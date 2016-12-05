@@ -66,13 +66,7 @@ function buttonClickEvents(){
   redButton.addEventListener('click', redFunction);
   yellowButton.addEventListener('click', yellowFunction);
   blueButton.addEventListener('click', blueFunction);
-  // for (var i = 0; i < 4; i++) {
-  //   colorButtons[i].addEventListener('click', function(event){
-  //   var choice = parseInt(event.target.getAttribute('data-number'));
-  //   userChoices.push(choice);
-  //   colorFunction(choice);
-  // });
-// }//for
+
 }//buttonClickEvents
 function greenFunction (){
   mostRecentChoice = 1;
@@ -139,6 +133,77 @@ function blueFunction(){
   // userTurn = !userTurn;
   checkArrayLengths(userChoices, computerChoices);
 }//end of blueFunction
+
+
+function checkArrayLengths(u,c){
+    if (u.length === c.length){
+
+            if (u[u.length - 1] === c[c.length - 1]){
+              //do something nice for the next round  ////////////////////////
+              playersTurn = false;
+              goToNextRound();
+            }//if
+            else{console.log('You lose spot 2');}
+
+
+    }//if
+    else if (u.length < c.length){
+        for (var i = 0; i < u.length; i++){
+            if (u[i] === c[i]){
+              playersTurn = true;
+              thePlayersTurn();
+            }//if
+            else{console.log("You lose spot 1");}
+        }//for
+    }//elif
+    else{console.log("this message should never show");}
+}//checkArrayLengths
+
+
+
+function theComputersTurn(){
+  if (playersTurn === false){
+      //computers turn now
+      round++;
+      //remember to put the round on screen here
+      userChoices = [];  //erases all user choices
+      ranNum = Math.floor((Math.random() * 4) + 1);//picks a random number
+      computerChoices.push(ranNum);// pushes to the computers array
+
+      var n = 0;
+      var intervalComputer = setInterval(function(){
+          //setInterval for each computer presses
+          if (n === computerChoices.length - 0){clearInterval(intervalComputer);}//if//clears interval after all the comp presses so it doesnt keep going forever
+          setTimeout(function(){  highlight(computerChoices[n]);     }, 400);
+          setTimeout(function(){unhighlight(computerChoices[n]); n++;}, 700);
+      }, 702);//setInterval
+      playersTurn = true;
+  }//if playersTurn
+}//theComputersTurn function
+
+function thePlayersTurn(){
+  if (playersTurn === true){
+    // waitForTheClick();
+
+
+  }//playersTurn
+}//thePlayersTurn function
+
+function getEverythingStarted(){
+    buttonClickEvents(); // set up game board
+    continueGame = true;
+    goToNextRound();
+}//getEverythingStarted
+
+startGameButton.addEventListener('click', getEverythingStarted);
+
+// for (var i = 0; i < 4; i++) {
+//   colorButtons[i].addEventListener('click', function(event){
+//   var choice = parseInt(event.target.getAttribute('data-number'));
+//   userChoices.push(choice);
+//   colorFunction(choice);
+// });
+// }//for
 
 // function colorFunction(){
 //
@@ -216,29 +281,6 @@ function blueFunction(){
 //     // }, 302);
 //     //   // userTurn = !userTurn;
 //   }//colorFunction
-function checkArrayLengths(u,c){
-    if (u.length === c.length){
-
-            if (u[u.length - 1] === c[c.length - 1]){
-              //do something nice for the next round  ////////////////////////
-              playersTurn = false;
-              goToNextRound();
-            }//if
-            else{console.log('You lose spot 2');}
-
-
-    }//if
-    else if (u.length < c.length){
-        for (var i = 0; i < u.length; i++){
-            if (u[i] === c[i]){
-              playersTurn = true;
-              thePlayersTurn();
-            }//if
-            else{console.log("You lose spot 1");}
-        }//for
-    }//elif
-    else{console.log("this message should never show");}
-}//checkArrayLengths
 
 // function waitForTheClick(){
 //     var event = new Event('build');
@@ -252,42 +294,6 @@ function checkArrayLengths(u,c){
 //     // when user does action, then decide:
 //     // listen to event emitted from button click interval completion
 // }//end of wait for the click
-
-function theComputersTurn(){
-  if (playersTurn === false){
-      //computers turn now
-      round++;
-      //remember to put the round on screen here
-      userChoices = [];  //erases all user choices
-      ranNum = Math.floor((Math.random() * 4) + 1);//picks a random number
-      computerChoices.push(ranNum);// pushes to the computers array
-
-      var n = 0;
-      var intervalComputer = setInterval(function(){
-          //setInterval for each computer presses
-          if (n === computerChoices.length - 0){clearInterval(intervalComputer);}//if//clears interval after all the comp presses so it doesnt keep going forever
-          setTimeout(function(){  highlight(computerChoices[n]);     }, 400);
-          setTimeout(function(){unhighlight(computerChoices[n]); n++;}, 700);
-      }, 702);//setInterval
-      playersTurn = true;
-  }//if playersTurn
-}//theComputersTurn function
-
-function thePlayersTurn(){
-  if (playersTurn === true){
-    waitForTheClick();
-
-
-  }//playersTurn
-}//thePlayersTurn function
-
-function getEverythingStarted(){
-    buttonClickEvents(); // set up game board
-    continueGame = true;
-    goToNextRound();
-}//getEverythingStarted
-
-startGameButton.addEventListener('click', getEverythingStarted);
 
 /*
 var greenButton = document.getElementById('greenButton');
