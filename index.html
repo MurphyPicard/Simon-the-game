@@ -9,10 +9,10 @@
 
   <body>
     <div class="container">
-      <h1 id="nameOfGame">Simon</h1>
-      <p><span>A memory game invented by Ralph H. Baer and Howard J. Morrison</span></p>
-      <p><span>Turn </span><span id="round">1</span></p>
-      <p>Official slogan:  Simon's a computer, Simon has a brain, you either do what Simon says or else go down the drain</p>
+
+      <h1 id="nameOfGame">SIMON</h1>
+      <p><span>A memory game invented by Ralph H. Baer and Howard J. Morrison, with the code re-written by me, Ara David Yaghsizian, in 2016.</span></p>
+      <p id="roundcounter"><span>Turn </span><span id="round">1</span></p>
       <button type="button" id="startButton">Start</button>
 
 
@@ -23,11 +23,12 @@
         <div onclick="playSound4()" class="coloredButton" data-number=4 id="blueButton">blue 4</div>
       </div><!--fourButtons-->
 
+      <p>Official slogan:  Simon's a computer, Simon has a brain, you either do what Simon says or else go down the drain</p>
+
       <audio id="play1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
       <audio id="play2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
       <audio id="play3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
       <audio id="play4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
-
 
     </div><!--container-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

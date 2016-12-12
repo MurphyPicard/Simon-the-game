@@ -6,6 +6,10 @@
   margin: 10px;
   font-size: 66px;
 }
+#roundcounter{
+  font-size: 3em;
+  margin: -10px;
+}
 #startButton{
   color: #fff;
   font-size: 22px;
@@ -13,36 +17,42 @@
   margin: 25px 25px 0px 25px;
   height: 70px;
   width: 350px;
+  border-radius: 15px;
 }
 .fourButtons{
   display: flex;
   flex-wrap: wrap;
-  height: 500px;
-  width: 500px;
-  background-color: rgba(84, 82, 36, 1);
+  height: 350px;
+  width: 350px;
+  background-color: rgba(0,0,0, 1);
   margin: 0 auto;
+  border-radius: 50px;
 }
 #greenButton{
   background-color: #9f9;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   margin: auto;
+  border-radius: 40px 10px 10px 10px;
 }
 #redButton{
   background-color: #f99;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   margin:auto;
+  border-radius: 10px 40px 10px 10px;
 }
 #yellowButton{
   background-color: #ff9;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   margin: auto;
+  border-radius: 10px 10px 10px 40px;
 }
 #blueButton{
   background-color: #9ff;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   margin: auto;
+  border-radius: 10px 10px 40px 10px;
 }
