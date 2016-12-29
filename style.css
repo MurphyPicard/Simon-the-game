@@ -2,9 +2,9 @@
   text-align: center;
 }
 #nameOfGame{
-  color: turquoise;
-  margin: 10px;
-  font-size: 66px;
+  color: orange;
+  margin: 10px 10px 0px 10px;
+  font-size: 5em;
 }
 #roundcounter{
   font-size: 3em;
@@ -55,4 +55,12 @@
   width: 150px;
   margin: auto;
   border-radius: 10px 10px 40px 10px;
+}
+#gitimage{
+  height: 60px;
+  width: auto;
+}
+#linkedinimage{
+  height: 60px;
+  width: auto;
 }
