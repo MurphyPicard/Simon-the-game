@@ -47,7 +47,6 @@ function unhighlight (num){
   }//switch
 }//unhighlight
 function goToNextRound(){
-
       theComputersTurn();
       // wait for cpu turn to finish...//////////////////////////////////////
       console.log('hi');
@@ -66,8 +65,8 @@ function buttonClickEvents(){
   redButton.addEventListener('click', redFunction);
   yellowButton.addEventListener('click', yellowFunction);
   blueButton.addEventListener('click', blueFunction);
-
 }//buttonClickEvents
+
 function greenFunction (){
   mostRecentChoice = 1;
   userChoices.push(mostRecentChoice);
